@@ -7,11 +7,12 @@ class App extends Component {
   render() {
   console.log("Rendering <App/> **************")
     return (
-  <div className="wrapper">
-	  <nav>
-	    <h1>Chatty</h1>
-	  </nav>
+  <div id="message-list">
+  	<div className="message system">
+      Anonymous1 changed their name to nomnom.
+    </div>
   </div>
+
     );
   }
 }
