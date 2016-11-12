@@ -1,19 +1,51 @@
 import React, {Component} from 'react';
-import MessageList from './MessageList.jsx';
-import Message from './Message.jsx';
-import ChatBar from './ChatBar.jsx';
 
-class App extends Component {
+
+class ChatBar extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {value: ''};
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	handleChange(event) {
+		this.setState({value: event.target.value});
+	}
+
+	handleSubmit(event) {
+		if(event.charCode === 13) {
+			event.preventDefault();
+			console.log("this is the value: " + this.state.value);
+			console.log(this.props.currentUser);
+			let username = this.refs.username.value;
+			let newMessage = this.refs.newMessage.value;
+			this.props.onSubmit(username, newMessage);
+		}
+	}
   render() {
-  console.log("Rendering <App/> **************")
-    return (
+  console.log("Rendering**************")
+  const currentUser = this.props.currentUser;
 
+    return (
     <footer>
-    	<input id="username" type="text" placeholder="Your Name (Optional)" />
-    	<input id="new-message" type="text" placeholder="Type a message and hit ENTER" />
+
+    	<input id="username" 
+    	type="text" 
+    	ref="username" 
+    	placeholder={currentUser} 
+    	value={this.props.currentUser} />
+
+    	<input id="new-message" 
+    	type="text" 
+    	placeholder="Type a message and hit ENTER" 
+    	value={this.state.value}
+    	onChange={this.handleChange}
+    	onKeyPress={this.handleSubmit} />
+  	
   	</footer>
 
     );
   }
 }
-export default App;
+export default ChatBar;

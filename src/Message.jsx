@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import MessageList from './MessageList.jsx';
-import Message from './Message.jsx';
-import ChatBar from './ChatBar.jsx';
 
-class App extends Component {
+class Message extends Component {
   render() {
-  console.log("Rendering <App/> **************")
+  console.log("Rendering**************");
+  const {username, content} = this.props;
     return (
      <div className="message">
-      <span className="username">Anonymous1</span>
-      <span className="content">I won't be impressed with technology until I can download food.</span>
+      <span className="username">{this.props.message.username}</span>
+      <span className="content">{this.props.message.content}</span>
     </div>
     );
   }
 }
-export default App;
+export default Message;
