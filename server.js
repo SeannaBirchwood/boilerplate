@@ -14,5 +14,8 @@ new WebpackDevServer(webpack(config), {
       console.log(err);
     }
 
+  // exampleSocket.onmessage = function (event) {
+  //   console.log(event.data);
+  // } 
     console.log('Running at http://0.0.0.0:3000');
   });

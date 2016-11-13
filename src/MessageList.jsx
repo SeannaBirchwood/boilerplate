@@ -2,23 +2,20 @@ import React, {Component} from 'react';
 import Message from './Message.jsx';
 
 class MessageList extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    console.log("Rendering**************");
-    const messages = this.props.messages;
-    const messageItems = messages.map((message) => {
-      return <Message message={message} key={message.id.toString()} />
-    })
-    return (
-  <div id="message-list">
-  {messageItems}
-  	<div className="message system">
-    </div>
-  </div>
 
+  render() {
+    console.log("MessageList rendered");
+
+    return (
+    <div id="message-list">
+    {this.props.messages.map((msg) => {
+      return (
+        <Message key={msg.id} message={msg} />
+      )
+    })}
+    </div>
     );
   }
 }
+
 export default MessageList;

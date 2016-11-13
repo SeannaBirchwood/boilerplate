@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 class ChatBar extends Component {
 	constructor(props) {
 		super(props);
@@ -14,38 +13,38 @@ class ChatBar extends Component {
 	}
 
 	handleSubmit(event) {
-		if(event.charCode === 13) {
+		if(event.charCode == 13) {
 			event.preventDefault();
-			console.log("this is the value: " + this.state.value);
-			console.log(this.props.currentUser);
-			let username = this.refs.username.value;
-			let newMessage = this.refs.newMessage.value;
-			this.props.onSubmit(username, newMessage);
+			console.log("the user says: " + this.state.value);
+      this.props.onSubmit(this.refs.newmessage.value, this.refs.username.value)			
 		}
+    this.state.value = "";
 	}
+
   render() {
-  console.log("Rendering**************")
+  console.log("chatBar rendered")
   const currentUser = this.props.currentUser;
 
     return (
     <footer>
 
     	<input id="username" 
-    	type="text" 
+    	type="text"
+      placeholder="Your name (Optional)"
     	ref="username" 
-    	placeholder={currentUser} 
-    	value={this.props.currentUser} />
+    	value={this.props.currentuser}/>
 
     	<input id="new-message" 
     	type="text" 
     	placeholder="Type a message and hit ENTER" 
-    	value={this.state.value}
+    	ref="newmessage"
+      value={this.state.value}
     	onChange={this.handleChange}
     	onKeyPress={this.handleSubmit} />
   	
   	</footer>
-
     );
   }
 }
+
 export default ChatBar;
